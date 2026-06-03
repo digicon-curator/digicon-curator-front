@@ -1,0 +1,261 @@
+.container {
+  min-height: 100vh;
+  background-color: #fafafa;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* 1. 상단 헤더 바 */
+.header {
+  height: 60px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  border-bottom: 1px solid #e2e8f0;
+  position: sticky;
+  top: 0;
+  zIndex: 50;
+}
+
+.navGroup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navBtn {
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background-color 0.15s;
+}
+
+.navBtn:hover {
+  background-color: #f1f5f9;
+  color: #0f172a;
+}
+
+.topCategory {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border: 1px solid;
+  border-radius: 4px;
+}
+
+/* 레이아웃 메인 폭 제한 */
+.mainWrapper {
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+/* 2. 좌측 이미지 + 우측 요약 영역 */
+.introSection {
+  display: flex;
+  gap: 40px;
+  background-color: #ffffff;
+  padding: 32px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  margin-bottom: 40px;
+}
+
+.imageBox {
+  flex: 1;
+  max-width: 450px;
+  height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.mainImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.infoBox {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 16px 0;
+}
+
+.desc {
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: #334155;
+  margin: 0 0 24px 0;
+}
+
+.metaList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* 3. 서사 중심 세로형 타임라인 */
+.timelineSection {
+  background-color: #ffffff;
+  padding: 32px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 40px;
+}
+
+.timelineHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.timelineHeader h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.timelineContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.timelineItem {
+  display: flex;
+  gap: 24px;
+}
+
+/* 타임라인 왼쪽 기둥선 설계 */
+.timelineBadgeColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timeYear {
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.timelineLine {
+  width: 2px;
+  flex-grow: 1;
+  background-color: #f1f5f9;
+  margin: 8px 0;
+  min-height: 50px;
+}
+
+/* 마지막 타임라인 선은 안 보이게 차단 */
+.timelineItem:last-child .timelineLine {
+  background-color: transparent;
+}
+
+/* 타임라인 우측 서사 카드 */
+.timelineContentCard {
+  flex-grow: 1;
+  padding-bottom: 32px;
+}
+
+.timelineCardTitle {
+  font-size: 15.5px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 6px 0;
+}
+
+.timelineCardText {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #475569;
+  margin: 0;
+}
+
+/* 4. 최하단 위치 확인 버튼 */
+.footerArea {
+  display: flex;
+  justify-content: center;
+}
+
+.mapActionBtn {
+  max-width: 320px;
+  width: 100%;
+  background-color: #0f172a;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 14.5px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.mapActionBtn:hover {
+  background-color: #1e293b;
+}
+
+/* 태블릿/모바일 반응형 대응 */
+@media (max-width: 768px) {
+  .introSection {
+    flex-direction: column;
+    gap: 24px;
+    padding: 20px;
+  }
+  .imageBox {
+    max-width: 100%;
+    height: 220px;
+  }
+  .timelineItem {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .timelineBadgeColumn {
+    align-items: flex-start;
+  }
+  .timelineLine {
+    display: none;
+  }
+  .timelineContentCard {
+    padding-bottom: 24px;
+    padding-left: 4px;
+  }
+}

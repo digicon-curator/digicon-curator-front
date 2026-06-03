@@ -1,0 +1,312 @@
+.container {
+  min-height: 100vh;
+  background-color: #f8fafc;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* --- [추가] 메인페이지 왼쪽 사이드바 CSS --- */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -280px; /* 기본값은 숨김 처리 */
+  width: 280px;
+  height: 100vh;
+  background-color: #ffffff;
+  box-shadow: 4px 0 20px rgba(15, 23, 42, 0.15);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* 부드러운 슬라이딩 오픈 */
+  box-sizing: border-box;
+}
+
+/* 사이드바가 열렸을 때 활성화되는 클래스 */
+.sidebarOpen {
+  left: 0;
+}
+
+.sidebarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.sidebarLogo {
+  font-size: 16px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+}
+
+.closeBtn:hover {
+  color: #0f172a;
+}
+
+.sidebarContent {
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebarWelcome {
+  font-size: 13.5px;
+  color: #64748b;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* [추가/이동] 사이드바 내부 전용 지도보기 버튼 디자인 */
+.mapNavBtn {
+  background-color: #0f172a;
+  color: #ffffff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+  width: 100%;
+}
+
+.mapNavBtn:hover {
+  background-color: #1e293b;
+}
+
+/* 사이드바 배경 블러/어둡게 처리하는 레이어 */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(15, 23, 42, 0.4);
+  z-index: 150;
+}
+
+/* 상단 헤더 영역 */
+.header {
+  background-color: #0f172a;
+  color: #ffffff;
+  padding: 20px 40px 60px 40px;
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto 40px auto;
+}
+
+/* [추가] 사이드바 열기 전용 삼선 햄버거 버튼 */
+.menuToggleBtn {
+  position: absolute; /* 헤더의 흐름에서 벗어나 절대 좌표로 움직입니다 */
+  top: 16px;          /* 화면 위쪽 구석 여백 */
+  left: 16px;         /* 화면 왼쪽 구석 여백 */
+  z-index: 100;       /* 배경이나 다른 요소에 가려지지 않도록 위로 올림 */
+  background-color: rgba(255, 255, 255, 0.1); /* 구석에서 잘 보이도록 살짝 투명한 배경 추가 */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.menuToggleBtn:hover {
+  background-color: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0;
+}
+
+/* 검색 섹션 */
+.searchSection {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.mainTitle {
+  font-size: 28px;
+  font-weight: 800;
+  margin: 0 0 20px 0;
+}
+
+.searchBarWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 20px;
+  color: #94a3b8;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 16px 16px 16px 54px;
+  font-size: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.searchInput:focus {
+  background-color: #ffffff;
+  color: #0f172a;
+}
+
+/* 메인 콘텐츠 영역 */
+.mainContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.sectionHeader {
+  margin-bottom: 24px;
+}
+
+.sectionHeader h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+/* 카드 격자 구조 */
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+/* 스토리 카드 본체 */
+.storyCard {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.storyCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* 카드 상단 이미지 영역 CSS */
+.cardImageWrapper {
+  width: 100%;
+  height: 180px;
+  position: relative;
+  overflow: hidden;
+  background-color: #e2e8f0;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.storyCard:hover .cardImage {
+  transform: scale(1.04);
+}
+
+.cardCategory {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* 카드 텍스트 내용 */
+.cardContent {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.cardTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 10px 0;
+}
+
+.cardDesc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #475569;
+  margin: 0 0 20px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex-grow: 1;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 13px;
+  font-weight: 700;
+  gap: 2px;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 12px;
+  margin-top: auto;
+}
+
+/* 검색 결과 없음 */
+.noResult {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  color: #64748b;
+  font-size: 15px;
+}
