@@ -3,21 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import MapPage from './pages/MapPage';
 import DetailPage from './pages/DetailPage';
-
-// 기존 App
-/*function App() {
-  return (*/
-    /* ⚠️ 최후의 수단: 환경 변수가 작동하지 않을 때는 
-       저장소 이름 경로를 직접 문자열로 확실하게 지정해 줍니다! (앞에 슬래시 필수, 뒤에는 제외) */
-    /*<BrowserRouter basename="/digicon_culture_test">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/map" element={<MapPage />} />
-        <Route path="/detail/:id" element={<DetailPage />} />
-      </Routes>
-    </BrowserRouter>
-  );
-}*/
+// 💡 [신규 추가] 새롭게 생성할 AI 맞춤형 추천 페이지 임포트
+import AiRecommendPage from './pages/AiRecommendPage'; 
 
 // src/App.jsx
 function App() {
@@ -29,6 +16,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/map" element={<MapPage />} />
         <Route path="/detail/:id" element={<DetailPage />} />
+        {/* 💡 [신규 추가] AI 추천 컴포넌트를 브라우저 라우터 인프라에 등록 */}
+        <Route path="/ai-recommend" element={<AiRecommendPage />} />
       </Routes>
     </BrowserRouter>
   );

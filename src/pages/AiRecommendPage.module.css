@@ -1,0 +1,230 @@
+/* src/pages/AiRecommendPage.module.css */
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: 'Pretendard', -apple-system, sans-serif;
+  color: #0f172a;
+  min-height: 100vh;
+}
+
+/* 상단 헤더 및 네비게이션 */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  color: #64748b;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  width: fit-content;
+  padding: 8px 12px 8px 0;
+  transition: color 0.2s;
+}
+
+.backBtn:hover {
+  color: #0f172a;
+}
+
+.titleBox h1 {
+  font-size: 32px;
+  font-weight: 800;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.titleBox p {
+  color: #64748b;
+  margin: 0;
+  font-size: 16px;
+}
+
+/* 질문지 폼 영역 */
+.formSection {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+  margin-bottom: 32px;
+}
+
+.questionGroup {
+  margin-bottom: 32px;
+}
+
+.questionGroup:last-child {
+  margin-bottom: 0;
+}
+
+.questionTitle {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: #1e293b;
+}
+
+.chipContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip {
+  padding: 10px 18px;
+  border-radius: 30px;
+  border: 1px solid #cbd5e1;
+  background-color: #ffffff;
+  color: #475569;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chip:hover {
+  background-color: #f8fafc;
+  border-color: #94a3b8;
+}
+
+/* 선택된 칩 디자인 */
+.chip.selected {
+  background-color: #f3e8ff;
+  border-color: #a855f7;
+  color: #7e22ce;
+  font-weight: 700;
+}
+
+/* AI 분석 버튼 */
+.submitBtn {
+  width: 100%;
+  padding: 18px;
+  background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 10px 25px rgba(126, 34, 206, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-bottom: 40px;
+}
+
+.submitBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px rgba(126, 34, 206, 0.4);
+}
+
+.submitBtn:disabled {
+  background: #cbd5e1;
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* AI 로딩 애니메이션 */
+.loadingBox {
+  text-align: center;
+  padding: 60px 0;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; transform: scale(0.98); }
+  50% { opacity: 1; transform: scale(1.02); }
+  100% { opacity: 0.6; transform: scale(0.98); }
+}
+
+/* 결과 카드 그리드 */
+.resultHeader {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  color: #0f172a;
+  border-top: 2px solid #f1f5f9;
+  padding-top: 40px;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.resultCard {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+.resultCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.1);
+}
+
+.cardImg {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* 매칭률 뱃지 */
+.matchBadge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background-color: #10b981;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cardInfo {
+  padding: 20px;
+}
+
+.cardTitle {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  color: #1e293b;
+}
+
+.cardDesc {
+  font-size: 14px;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
