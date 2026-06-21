@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Map, Marker } from 'pigeon-maps';
+import { Map, Marker, Overlay } from 'pigeon-maps'; // 👈 오직 이 줄 하나만 있어야 합니다!
 import { Menu, X, Home, Filter, ChevronRight, Search } from 'lucide-react';
 import { INITIAL_STORIES } from '../data';
 
@@ -195,10 +195,15 @@ function MapPage() {
       {/* --- 1. 대형 지도 메인화면 (pigeon-maps) --- */}
       <Map center={mapCenter} zoom={mapZoom} onBoundsChanged={handleBoundsChange}>
         {mapZoom < 9 ? (
-          // 멀리서 볼 때: 군집 원형 레이아웃 출력
+          // 💡 [핵심 해결] Marker 대신 Overlay 컴포넌트를 사용해야만 내부 div의 클릭이 작동합니다!
           clusters.map(cluster => (
-            <Marker key={cluster.region} anchor={cluster.center}>
+            <Overlay 
+              key={cluster.region} 
+              anchor={cluster.center}
+              offset={[23, 23]} // 46px 크기의 동그라미가 좌표 중앙에 오도록 절반값(23)으로 오프셋을 맞춥니다.
+            >
               <div 
+                // 💡 이제 이곳의 onClick이 어떠한 방해도 받지 않고 100% 작동합니다.
                 onClick={(e) => {
                   e.stopPropagation(); 
                   handleClusterClick(cluster); 
@@ -232,10 +237,10 @@ function MapPage() {
                   {cluster.count}
                 </div>
               </div>
-            </Marker>
+            </Overlay>
           ))
         ) : (
-          // 가까이서 볼 때: 정밀 핀포인트 마커 출력 (지역 색상 자동 매핑)
+          // 가까이서 볼 때(개별 핀포인트)는 오류가 없으므로 기존 <Marker>를 유지합니다.
           filteredPlaces.map(place => (
             <Marker 
               key={place.id} 
