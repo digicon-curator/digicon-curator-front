@@ -11,7 +11,7 @@ function App() {
   return (
     /* 💡 이렇게 적어두면 로컬(dev)일 때는 알아서 공백으로, 
        깃허브 배포(deploy)일 때는 저장소 경로로 똑똑하게 작동합니다. */
-    <BrowserRouter basename={import.meta.env.MODE === 'production' ? '/digicon_culture_test' : '/'}>
+      <BrowserRouter basename="/">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/map" element={<MapPage />} />
