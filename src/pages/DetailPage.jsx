@@ -18,7 +18,7 @@ function DetailPage() {
     const fetchStoryDetail = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch(`/api/stories/${id}`);
+        const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/stories/${id}`);
         if (!response.ok) {
           throw new Error('상세 데이터를 가져오는 데 실패했습니다.');
         }
