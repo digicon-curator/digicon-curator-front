@@ -40,7 +40,7 @@ function MapPage() {
     const fetchInitialStories = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch('/api/stories');
+        const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/stories`);
         if (!response.ok) throw new Error('네트워크 응답 오류');
         const data = await response.json();
         
